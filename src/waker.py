@@ -3,7 +3,7 @@
 import cv2
 import time
 import os
-from src.face import Face
+from face import Face
 
 cap = cv2.VideoCapture(0)
 face_detector = Face()
@@ -35,7 +35,7 @@ while True:
     else:
         face_detected = False
 
-    if not face_detected and time.time() - last_face_time > 60 and screen_off == False:
+    if not face_detected and time.time() - last_face_time > 7 and screen_off == False:
         print("No face detected for 60 seconds. Minimizing windows and putting computer to sleep...")
         time.sleep(4)
         screen_off = True
@@ -43,7 +43,7 @@ while True:
         os.system("xset s reset")
         os.system("systemctl suspend -i")
 
-    # cv2.imshow('frame', frame)
+    cv2.imshow('frame', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
