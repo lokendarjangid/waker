@@ -2,6 +2,7 @@
 
 import cv2
 import time
+import atexit
 import os
 from face import Face
 
@@ -9,8 +10,8 @@ cap = cv2.VideoCapture(0)
 face_detector = Face()
 
 screen_off = False
-os.system("xset dpms force off")
-os.system("xset s off")
+os.system("gsettings set org.gnome.desktop.session idle-delay 0")
+
 
 
 while True:
@@ -18,14 +19,14 @@ while True:
     if not ret:
         break
 
-    # Check if there's any face in the frame
+    # Check if there's any face in the frameos.system("xset s off")
     if face_detector.isface(frame=frame):
         last_face_time = time.time()
         face_detected = True
 
         if screen_off == True and face_detected == True:
             print("Face detected. Waking up computer...")
-            os.system("xset s off")
+            os.system("gsettings set org.gnome.desktop.session idle-delay 0")
             # time.sleep(4)
             screen_off = False
 
@@ -36,15 +37,16 @@ while True:
         print("No face detected for 60 seconds. Minimizing windows and putting computer to sleep...")
         time.sleep(4)
         screen_off = True
-        os.system("xset s reset")
+        os.system("gsettings set org.gnome.desktop.session idle-delay 300")
         os.system("systemctl suspend -i")
 
+    atexit.register(os.system,"gsettings set org.gnome.desktop.session idle-delay 300")
     #cv2.imshow('frame', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
 
-os.system("xset s reset")
+os.system("gsettings set org.gnome.desktop.session idle-delay 300")
 cap.release()
 cv2.destroyAllWindows()
