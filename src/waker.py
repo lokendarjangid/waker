@@ -37,13 +37,18 @@ while True:
 
     if not face_detected and time.time() - last_face_time > 7 and screen_off == False:
         print("No face detected for 60 seconds. Minimizing windows and putting computer to sleep...")
-        time.sleep(4)
-        screen_off = True
-        os.system("xset dpms force on")
-        os.system("xset s reset")
-        os.system("systemctl suspend -i")
+        
+        # Check if there's anyone in front of the screen before putting the computer to sleep
+        if face_detector.isface(frame=frame):
+            print("Face detected. Not putting computer to sleep.")
+        else:
+            time.sleep(4)
+            screen_off = True
+            os.system("xset dpms force on")
+            os.system("xset s reset")
+            os.system("systemctl suspend -i")
 
-    cv2.imshow('frame', frame)
+    #cv2.imshow('frame', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
