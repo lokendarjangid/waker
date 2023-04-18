@@ -9,9 +9,8 @@ cap = cv2.VideoCapture(0)
 face_detector = Face()
 
 screen_off = False
-os.system("xset s 60")
 os.system("xset dpms force off")
-os.system("xset s blank")
+os.system("xset s off")
 
 
 while True:
@@ -26,9 +25,7 @@ while True:
 
         if screen_off == True and face_detected == True:
             print("Face detected. Waking up computer...")
-            os.system("xset s 60")
-            os.system("xset dpms force off")
-            os.system("xset s blank")
+            os.system("xset s off")
             # time.sleep(4)
             screen_off = False
 
@@ -37,16 +34,10 @@ while True:
 
     if not face_detected and time.time() - last_face_time > 7 and screen_off == False:
         print("No face detected for 60 seconds. Minimizing windows and putting computer to sleep...")
-        
-        # Check if there's anyone in front of the screen before putting the computer to sleep
-        if face_detector.isface(frame=frame):
-            print("Face detected. Not putting computer to sleep.")
-        else:
-            time.sleep(4)
-            screen_off = True
-            os.system("xset dpms force on")
-            os.system("xset s reset")
-            os.system("systemctl suspend -i")
+        time.sleep(4)
+        screen_off = True
+        os.system("xset s reset")
+        os.system("systemctl suspend -i")
 
     #cv2.imshow('frame', frame)
 
@@ -54,7 +45,6 @@ while True:
         break
 
 
-os.system("xset dpms force on")
 os.system("xset s reset")
 cap.release()
 cv2.destroyAllWindows()
