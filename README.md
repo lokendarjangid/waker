@@ -5,13 +5,13 @@
 Waker is a simple tool to sleep your computer when you are away from it. It is a simple command line tool that can be used to sleep your computer after a specified time. It is written in python and uses the 'os' module to sleep the computer. It is a simple tool that can be used to save power and also to save your computer from overheating.
 
 ## installation
-'''bash
+```bash
 pip install -r requirements.txt
-'''
+```
 ## usage
-'''bash
+```bash
 python3 src/waker.py
-'''
+```
 
 ## 🤲 Contributing
 
