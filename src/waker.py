@@ -6,7 +6,7 @@ import atexit
 import os
 from face import Face
 
-def notify(title, message):
+def notify(title):
     """Display a notification on Ubuntu."""
     os.system(f'notify-send "{title}"')
 
