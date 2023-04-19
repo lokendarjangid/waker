@@ -6,10 +6,15 @@ import atexit
 import os
 from face import Face
 
+def notify(title):
+    """Display a notification on Ubuntu."""
+    os.system(f'notify-send "{title}"')
+
 cap = cv2.VideoCapture(0)
 face_detector = Face()
 
 screen_off = False
+flag = False
 os.system("gsettings set org.gnome.desktop.session idle-delay 0")
 
 
@@ -23,6 +28,7 @@ while True:
     if face_detector.isface(frame=frame):
         last_face_time = time.time()
         face_detected = True
+        flag = False
 
         if screen_off == True and face_detected == True:
             print("Face detected. Waking up computer...")
@@ -33,15 +39,22 @@ while True:
     else:
         face_detected = False
 
-    if not face_detected and time.time() - last_face_time > 7 and screen_off == False:
-        print("No face detected for 60 seconds. Minimizing windows and putting computer to sleep...")
-        time.sleep(4)
-        screen_off = True
-        os.system("gsettings set org.gnome.desktop.session idle-delay 300")
-        os.system("systemctl suspend -i")
+    if not face_detected and time.time() - last_face_time > 5 and screen_off == False:
+        # print("No face detected for 60 seconds. Minimizing windows and putting computer to sleep...")
+
+        if not flag:
+            notify('computer is about to sleep in 10 seconds')
+            flag = True
+        # time.sleep(10)
+
+        if not face_detected and time.time() - last_face_time > 10 and screen_off == False:
+
+            screen_off = True
+            os.system("gsettings set org.gnome.desktop.session idle-delay 300")
+            os.system("systemctl suspend -i")
 
     atexit.register(os.system,"gsettings set org.gnome.desktop.session idle-delay 300")
-    #cv2.imshow('frame', frame)
+    cv2.imshow('frame', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
