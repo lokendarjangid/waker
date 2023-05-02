@@ -13,10 +13,7 @@ To set up Waker, first, install the necessary dependencies:
 ```
 pip install -r requirements.txt
 ```
-To run the script, run
-```
-python3 main.py
-```
+
 
 ### Usage 🚀
 Simply run the following command to start using Waker:
