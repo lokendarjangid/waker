@@ -1,27 +1,39 @@
-# waker 
+# Waker 💤
+### Concept 💡
+Waker is a user-friendly command-line tool designed to put your computer to sleep when you're away, helping you save power 🔌 and prevent overheating 🔥. Developed using Python, Waker utilizes the 'os' module to manage your computer's sleep state efficiently.
 
-## concept
+### Installation 🛠️
 
-Waker is a simple tool to sleep your computer when you are away from it. It is a simple command line tool that can be used to sleep your computer after a specified time. It is written in python and uses the 'os' module to sleep the computer. It is a simple tool that can be used to save power and also to save your computer from overheating.
+``` 
+git clone https://github.com/lokendarjangid/waker_linux.git
+cd waker_linux
+```
+To set up Waker, first, install the necessary dependencies:
 
-## installation
-```bash
+```
 pip install -r requirements.txt
 ```
-## usage
-```bash
-python3 src/waker.py
+To run the script, run
+```
+python3 main.py
 ```
 
-## 🤲 Contributing
+### Usage 🚀
+Simply run the following command to start using Waker:
 
-Waker is an open source project.
+```
+python3 src/waker.py
+```
+### Contributing 🤲
+Waker is an open-source project, and we welcome your valuable contributions! Whether it's code updates, documentation improvements, design suggestions, bug reports, or feature requests, feel free to join our community.
 
-If you want to contribute, open a [Pull requests](https://github.com/lokendarjangid/waker/pulls). 
-All contributions are welcome, from code to documentation, to design suggestions, to bug reports, to feature requests.
+Submit your contributions through Pull requests.
 
-## 📜 License
+License 📜: [MIT](https://choosealicense.com/licenses/mit/)
 
-[MIT](https://github.com/lokendarjangid/waker/blob/master/LICENSE).
+- Made by Lokendar Jangid
+
+- Contributed on by [Tytan Codes](https://github.com/tytan-codes/)
+
 
 
