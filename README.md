@@ -30,7 +30,5 @@ License 📜: [MIT](https://choosealicense.com/licenses/mit/)
 
 - Made by Lokendar Jangid
 
-- Contributed on by [Tytan Codes](https://github.com/tytan-codes/)
-
 
 
