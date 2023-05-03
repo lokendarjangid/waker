@@ -54,7 +54,7 @@ while True:
             os.system("systemctl suspend -i")
 
     atexit.register(os.system,"gsettings set org.gnome.desktop.session idle-delay 300")
-    cv2.imshow('frame', frame)
+    #cv2.imshow('frame', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
