@@ -25,7 +25,7 @@ while True:
         break
 
     # Check if there's any face in the frameos.system("xset s off")
-    if face_detector.isface(frame=frame):
+    if face_detector.detected(frame=frame):
         last_face_time = time.time()
         face_detected = True
         flag = False
