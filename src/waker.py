@@ -1,4 +1,4 @@
-#!/home/lokendar/Desktop/python/waker/.venv/bin/python3
+#!/home/lokendar/Program/waker_linux/venv/bin/python3
 
 import cv2
 import time
@@ -54,7 +54,7 @@ while True:
             os.system("systemctl suspend -i")
 
     atexit.register(os.system,"gsettings set org.gnome.desktop.session idle-delay 300")
-    #cv2.imshow('frame', frame)
+    # cv2.imshow('frame', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
