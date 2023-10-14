@@ -43,11 +43,11 @@ while True:
         # print("No face detected for 60 seconds. Minimizing windows and putting computer to sleep...")
 
         if not flag:
-            notify('computer is about to sleep in 10 seconds')
+            notify('computer is about to sleep in 15 seconds')
             flag = True
         # time.sleep(10)
 
-        if not face_detected and time.time() - last_face_time > 10 and screen_off == False:
+        if not face_detected and time.time() - last_face_time > 15 and screen_off == False:
 
             screen_off = True
             os.system("gsettings set org.gnome.desktop.session idle-delay 300")
