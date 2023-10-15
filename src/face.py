@@ -3,11 +3,13 @@ import mediapipe as mp
 
 
 class Face:
+    """Direct access of face module"""
     def __init__(self):
         self.frame_rgb = None
         self.mp_face_detection = mp.solutions.face_detection.FaceDetection()
 
     def detected(self, frame):
+        """Detect the face and return true or false"""
 
         # Process the frame with the Face Detection module
         self.frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
