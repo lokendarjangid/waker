@@ -1,4 +1,4 @@
-#!/home/lokendar/Program/waker_linux/venv/bin/python3
+#!/home/lokendar/Program/waker_linux/.venv/bin/python3
 
 import cv2
 import time
@@ -15,7 +15,7 @@ face_detector = Face()
 screen_off = False
 flag = False
 os.system("gsettings set org.gnome.desktop.session idle-delay 0")
-
+last_face_time = time.time()
 
 
 while True:
